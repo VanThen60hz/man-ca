@@ -48,6 +48,7 @@ const UserTable = ({ userData }) => {
       );
 
       setInitialUserData(updatedUserData);
+      setVisibleRows(updatedUserData);
 
       console.log("Updated User Data:", updatedUserData);
 
