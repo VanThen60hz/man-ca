@@ -2,22 +2,13 @@ import React, { useState } from "react";
 import { Button, Form, Input, Modal, Select, Table } from "antd";
 import "./UserTable.css";
 
-const UserTable = ({ userData: initialUserData }) => {
+const UserTable = ({ userData }) => {
+  const [initialUserData, setInitialUserData] = useState(userData);
   const [sortedInfo, setSortedInfo] = useState(null);
-  const [visibleRows, setVisibleRows] = useState(initialUserData);
+  const [visibleRows, setVisibleRows] = useState(userData);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedRecord, setSelectedRecord] = useState(null);
   const [form] = Form.useForm(); // Use Form hooks to access form methods
-
-  const handleChangeSelect = (value) => {
-    if (value === "all") {
-      setVisibleRows(initialUserData);
-    } else if (value === "3") {
-      setVisibleRows(initialUserData.slice(0, 3));
-    } else if (value === "5") {
-      setVisibleRows(initialUserData.slice(0, 5));
-    }
-  };
 
   const handleSort = (columnKey) => {
     setSortedInfo((prevSortedInfo) => {
@@ -34,6 +25,16 @@ const UserTable = ({ userData: initialUserData }) => {
     });
   };
 
+  const handleChangeSelect = (value) => {
+    if (value === "all") {
+      setVisibleRows(initialUserData);
+    } else if (value === "3") {
+      setVisibleRows(initialUserData.slice(0, 3));
+    } else if (value === "5") {
+      setVisibleRows(initialUserData.slice(0, 5));
+    }
+  };
+
   const showModal = (record) => {
     setSelectedRecord(record);
     setIsModalOpen(true);
@@ -46,7 +47,7 @@ const UserTable = ({ userData: initialUserData }) => {
         user.id === selectedRecord.id ? { ...user, ...values } : user
       );
 
-      setVisibleRows(updatedUserData);
+      setInitialUserData(updatedUserData);
 
       console.log("Updated User Data:", updatedUserData);
 
@@ -57,6 +58,7 @@ const UserTable = ({ userData: initialUserData }) => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
   const columns = [
     {
       title: "No",
