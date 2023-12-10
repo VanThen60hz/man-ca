@@ -1,0 +1,49 @@
+body {
+  background-color: #ede9e8;
+}
+
+h1 {
+  color: blue;
+}
+
+.ant-table-cell button {
+  background-color: #da2b98 !important;
+  color: white !important;
+}
+
+.ant-table-cell button:hover {
+  background-color: aliceblue !important;
+  color: #000000 !important;
+}
+
+.user-table {
+  margin: 0 auto;
+  width: 70%;
+}
+
+.table-actions {
+  display: flex;
+  justify-content: center;
+  margin: 50px auto;
+  height: 150px;
+}
+
+.table-actions button {
+  margin-right: 10px;
+  background-color: #da2b98 !important;
+  color: white !important;
+}
+
+.table-actions button:hover {
+  background-color: aliceblue !important;
+  color: #000000 !important;
+}
+
+.ant-form-item-control-input {
+  text-align: left;
+}
+
+.ant-table-thead > tr > .ant-table-cell {
+  background-color: #da2b98 !important;
+  color: white !important;
+}
